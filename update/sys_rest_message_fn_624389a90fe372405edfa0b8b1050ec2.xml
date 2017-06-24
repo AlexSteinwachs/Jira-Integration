@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content>{&#13;
+    "body": "${jira_comment}"&#13;
+}&#13;
+</content>
+        <function_name>Add Comment</function_name>
+        <http_method>post</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Jira [ Add Comment ]</qualified_name>
+        <rest_endpoint>https://${url}/rest/api/2/</rest_endpoint>
+        <rest_message display_value="Jira">0cc2c1690fe372405edfa0b8b1050e33</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>alex</sys_created_by>
+        <sys_created_on>2017-06-24 02:27:52</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>624389a90fe372405edfa0b8b1050ec2</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Add Comment</sys_name>
+        <sys_package display_value="Jira Integration" source="x_snc_jra_int">1f14f86d0fa372405edfa0b8b1050e4f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jira Integration">1f14f86d0fa372405edfa0b8b1050e4f</sys_scope>
+        <sys_update_name>sys_rest_message_fn_624389a90fe372405edfa0b8b1050ec2</sys_update_name>
+        <sys_updated_by>alex</sys_updated_by>
+        <sys_updated_on>2017-06-24 03:51:06</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_jra_int.jiraFunctions</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>jiraFunctions</name>
+        <script><![CDATA[var jiraFunctions = Class.create();
+jiraFunctions.prototype = {
+    initialize: function() {
+    },
+
+	createIssue: function (sys_id) {
+		 try { 
+			 var p = new GlideRecord('problem');
+			 p.get(sys_id);
+			 
+ var r = new sn_ws.RESTMessageV2('x_snc_jra_int.Jira', 'Create Issue');
+ r.setStringParameterNoEscape('snc_number', p.number.getDisplayValue());
+ r.setStringParameterNoEscape('issue_description', p.description.getDisplayValue());
+ r.setStringParameterNoEscape('jira_key', '');
+ r.setStringParameterNoEscape('customfield', '');
+ r.setStringParameterNoEscape('issue_summary', p.short_description.getDisplayValue());
+ r.setStringParameterNoEscape('url', '');
+ r.setStringParameterNoEscape('issue_type', 'Bug');
+			 r.setBasicAuth()
+
+//override authentication profile 
+//authentication type ='basic'/ 'oauth2'
+//r.setAuthentication(authentication type, profile name);
+
+ var response = r.execute();
+ var responseBody = response.getBody();
+ var httpStatus = response.getStatusCode();
+}
+catch(ex) {
+ var message = ex.getMessage();
+}
+	},
+	
+    type: 'jiraFunctions'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alex</sys_created_by>
+        <sys_created_on>2017-06-24 04:54:40</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d862a9650f6772405edfa0b8b1050e76</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>jiraFunctions</sys_name>
+        <sys_package display_value="Jira Integration" source="x_snc_jra_int">1f14f86d0fa372405edfa0b8b1050e4f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jira Integration">1f14f86d0fa372405edfa0b8b1050e4f</sys_scope>
+        <sys_update_name>sys_script_include_d862a9650f6772405edfa0b8b1050e76</sys_update_name>
+        <sys_updated_by>alex</sys_updated_by>
+        <sys_updated_on>2017-06-24 04:54:40</sys_updated_on>
+    </sys_script_include>
+</record_update>

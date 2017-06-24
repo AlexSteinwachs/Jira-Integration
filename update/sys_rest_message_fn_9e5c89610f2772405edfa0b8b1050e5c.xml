@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content>{&#13;
+    "fields": {&#13;
+       "project":&#13;
+       { &#13;
+          "key": "${jira_key}"&#13;
+       },&#13;
+       "summary": "${issue_summary}",&#13;
+       "description": "${issue_description}",&#13;
+       "issuetype": {&#13;
+          "name": "${issue_type}"&#13;
+       },       &#13;
+       "${customfield}" : "${snc_number}",&#13;
+   }&#13;
+}&#13;
+</content>
+        <function_name>Create Issue</function_name>
+        <http_method>post</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Jira [ Create Issue ]</qualified_name>
+        <rest_endpoint>https://${url}/rest/api/2/</rest_endpoint>
+        <rest_message display_value="Jira">0cc2c1690fe372405edfa0b8b1050e33</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>alex</sys_created_by>
+        <sys_created_on>2017-06-24 03:46:30</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9e5c89610f2772405edfa0b8b1050e5c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create Issue</sys_name>
+        <sys_package display_value="Jira Integration" source="x_snc_jra_int">1f14f86d0fa372405edfa0b8b1050e4f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jira Integration">1f14f86d0fa372405edfa0b8b1050e4f</sys_scope>
+        <sys_update_name>sys_rest_message_fn_9e5c89610f2772405edfa0b8b1050e5c</sys_update_name>
+        <sys_updated_by>alex</sys_updated_by>
+        <sys_updated_on>2017-06-24 03:46:30</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

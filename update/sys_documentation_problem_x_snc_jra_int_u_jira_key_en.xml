@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="x_snc_jra_int_u_jira_key" label="Jira Issue" language="en" table="problem">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>x_snc_jra_int_u_jira_key</element>
+            <help/>
+            <hint/>
+            <label>Jira Issue</label>
+            <language>en</language>
+            <name>problem</name>
+            <plural>Jira Issues</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>alex</sys_created_by>
+            <sys_created_on>2017-06-24 04:11:00</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_id>950b15ad0f2772405edfa0b8b1050eba</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Jira Issue</sys_name>
+            <sys_package display_value="Jira Integration" source="x_snc_jra_int">1f14f86d0fa372405edfa0b8b1050e4f</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Jira Integration">1f14f86d0fa372405edfa0b8b1050e4f</sys_scope>
+            <sys_update_name>sys_documentation_problem_x_snc_jra_int_u_jira_key_en</sys_update_name>
+            <sys_updated_by>alex</sys_updated_by>
+            <sys_updated_on>2017-06-24 04:11:00</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

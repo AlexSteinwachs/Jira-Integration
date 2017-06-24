@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>updateProblem</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	var data = request.body.data;
+	var key = data.issue.key;
+	gs.info('FOUND KEY '+key);
+	var gr = new GlideRecord('problem');
+	gr.addQuery('x_snc_jra_int_u_jira_key', key);
+	gr.query();
+	while (gr.next()){
+		//match for (Additional comments} and (Work notes) and dont update those lines (they are updates from ServiceNow)
+		var acre = new SNC.Regex('/([(])+(Additional comments)+([)])/');
+		var wnre = new SNC.Regex('/([(])+(Work notes)+([)])/');
+		if (!acre.match(data.comment.body) && !wnre.match(data.comment.body)) {
+		gr.work_notes = data.comment.body;
+		gr.update();
+		} 
+		if (data.issue.fields.status.statusCategory.name == "To Do" || data.issue.fields.status.statusCategory.name == "In Progress"){
+			gr.state = 3;
+			gr.update();
+		}
+		if (data.issue.fields.status.statusCategory.name == "Done"){
+			gr.state = 1;
+			gr.work_notes = 'Jira Issue is Done, putting Problem back into Open.';
+			gr.update();
+		}
+		gs.info('FOUND: '+ request.body.dataString);
+		
+		}
+
+
+	})(request, response);]]></operation_script>
+        <operation_uri>/api/x_snc_jra_int/jira/updateProblem</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/updateProblem</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>alex</sys_created_by>
+        <sys_created_on>2017-06-24 04:03:48</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>59a855e90f2772405edfa0b8b1050e61</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>updateProblem</sys_name>
+        <sys_package display_value="Jira Integration" source="x_snc_jra_int">1f14f86d0fa372405edfa0b8b1050e4f</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jira Integration">1f14f86d0fa372405edfa0b8b1050e4f</sys_scope>
+        <sys_update_name>sys_ws_operation_59a855e90f2772405edfa0b8b1050e61</sys_update_name>
+        <sys_updated_by>alex</sys_updated_by>
+        <sys_updated_on>2017-06-24 04:13:27</sys_updated_on>
+        <web_service_definition display_value="Jira">92181da90f2772405edfa0b8b1050e42</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
